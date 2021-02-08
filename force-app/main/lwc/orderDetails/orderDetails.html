@@ -4,4 +4,17 @@
 
 <!-- Order Details -->
 <template>
+    <lightning-card title="Order Products" icon-name="custom:custom61">
+        <div class="slds-m-around_medium">
+            <template if:true={orderItems}>
+                <lightning-datatable
+                        key-field="Id"
+                        is-loading={isLoading}
+                        data={orderItems}
+                        columns={columns}
+                        hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
 </template>

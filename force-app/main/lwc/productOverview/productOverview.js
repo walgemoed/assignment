@@ -1,32 +1,44 @@
-/**
- * Created by Henk Walgemoed<henk.walgemoed@appsolutely.nl>
- */
+import {LightningElement, api, wire, track} from 'lwc';
+import getAvailableProducts from '@salesforce/apex/OrderController.getAvailableProducts';
 
-import {LightningElement, track} from 'lwc';
-import { ToastEventController } from 'c/toastEventController';
-import { getLabels } from './utils/labels';
 
-export default class ProductOverview extends LightningElement {
 
-    /**
-     * Track state of the component to display spinner when needed
-     */
+export default class AvailableProducts extends LightningElement {
+
+    @track columns = [
+        {label: 'Name', fieldName: 'Name'},
+        {label: 'unit Price', fieldName: 'UnitPrice', type: 'currency'}
+    ];
+
     @track isLoading = true;
+    @api recordId;
+    productData = [];
+    @api isDisabled = false;
 
-    /**
-     * Component Labels
-     */
-    @track labels = {};
+    connectedCallback() {
+        this.loadProducts();
+    }
 
-    async connectedCallback() {
+    loadProducts() {
         this.isLoading = true;
-        try {
-            this.labels = await getLabels();
+        getAvailableProducts({ orderId : this.recordId})
+            .then((result) => {
+                this.productData = result;
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+            .finally(()=>{
+                this.isLoading = false;
+            })
+    }
 
-        } catch (e) {
-            new ToastEventController(this).showErrorToastMessage(this.labels.ErrorLabel, reduceErrors(e).join(', '));
-        } finally {
-            this.isLoading = false;
-        }
+    addProducts() {
+        const productList = this.template.querySelector("[data-identifier='prodId']");
+        let selectedRows = productList.getSelectedRows();
+
+        let pbeIds = selectedRows.map((element) =>{ return element['Id'] });
+        let payload = { detail : { pbeIds } }
+        this.dispatchEvent(new CustomEvent('addbuttonclicked', payload));
     }
 }

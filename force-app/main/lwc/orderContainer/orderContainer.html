@@ -1,0 +1,16 @@
+<!--
+ - Created by Henk Walgemoed<henk.walgemoed@appsolutely.nl>
+ -->
+
+<!-- Order Container -->
+<template>
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-3">
+            <c-order-details record-id={recordId} ></c-order-details>
+        </div>
+        <div class="slds-col slds-size_2-of-3">
+            <c-product-overview record-id={recordId} onaddbuttonclicked={handleAddProductButton}></c-product-overview>
+        </div>
+    </div>
+</template>
