@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl></cacheControl>
+    <contentType></contentType>
+    <description>Displays list of products on the current order</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+</StaticResource>
