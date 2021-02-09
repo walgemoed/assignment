@@ -4,7 +4,7 @@
 
 <!-- Order Details -->
 <template>
-    <lightning-card title="Order Products" icon-name="custom:custom61">
+    <lightning-card title={label.Order_Products_Title} icon-name="custom:custom61">
         <div class="slds-m-around_medium">
             <template if:true={orderItems}>
                 <lightning-datatable
@@ -17,7 +17,7 @@
             </template>
         </div>
         <div class="slds-no-flex">
-            <button class="slds-button slds-button_neutral" onclick={sendoutOrder} disabled={isDisabled}>Send Order to service</button>
+            <button class="slds-button slds-button_neutral" onclick={sendoutOrder} disabled={isDisabled}>{label.Sendout_Title}</button>
         </div>
     </lightning-card>
 </template>

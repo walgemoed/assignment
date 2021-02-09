@@ -10,8 +10,16 @@ import getOrderItems from '@salesforce/apex/OrderController.getOrderItems';
 import addProducts from '@salesforce/apex/OrderController.addProducts';
 import sendoutOrder from '@salesforce/apex/OrderController.activateOrder';
 
+import Order_Products_Title from '@salesforce/label/c.Order_Products_Title';
+import Sendout_Title from '@salesforce/label/c.Sendout_Title';
+
+
 export default class OrderDetails extends LightningElement {
 
+    label = {
+        Order_Products_Title,
+        Sendout_Title
+    }
     /**
      * Current Record ID
      */

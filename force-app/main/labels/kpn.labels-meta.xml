@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
-        <fullName>OrderItem_Product_Name</fullName>
+        <fullName>Products_Title</fullName>
         <categories>Order</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Name label for the Product Name</shortDescription>
-        <value>Name</value>
+        <shortDescription>Product Label</shortDescription>
+        <value>Products</value>
     </labels>
     <labels>
-        <fullName>OrderItem_Unit_Price</fullName>
+        <fullName>Add_Products_Title</fullName>
         <categories>Order</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Unit Price of the Order Item</shortDescription>
-        <value>Unit Price</value>
+        <shortDescription>Add Products Label</shortDescription>
+        <value>Add Products</value>
     </labels>
     <labels>
-        <fullName>OrderItem_Quantity</fullName>
+        <fullName>Order_Products_Title</fullName>
         <categories>Order</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Amount of Products on the order</shortDescription>
-        <value>Quantity</value>
+        <shortDescription>Order Products Label</shortDescription>
+        <value>Order Products</value>
     </labels>
     <labels>
-        <fullName>OrderItem_Total_Price</fullName>
+        <fullName>Sendout_Title</fullName>
         <categories>Order</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Total Price of the Products</shortDescription>
-        <value>Total Price</value>
+        <shortDescription>Order Products Label</shortDescription>
+        <value>Send Order to service</value>
     </labels>
 </CustomLabels>

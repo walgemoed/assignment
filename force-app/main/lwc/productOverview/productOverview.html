@@ -1,8 +1,8 @@
 <template>
-    <lightning-card title="Products" icon-name="custom:custom61">
+    <lightning-card title={label.Product_Title} icon-name="custom:custom61">
         <div class="slds-m-around_medium">
             <div class="slds-no-flex">
-                <button class="slds-button slds-button_neutral" onclick={addProducts} disabled={isDisabled}>Add Products</button>
+                <button class="slds-button slds-button_neutral" onclick={addProducts} disabled={isDisabled}>{label.Add_Products_Title}</button>
             </div>
             <lightning-datatable
                     data-identifier="prodId"

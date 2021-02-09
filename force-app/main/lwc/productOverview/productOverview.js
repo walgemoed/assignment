@@ -2,8 +2,15 @@ import {LightningElement, api, wire, track} from 'lwc';
 import getAvailableProducts from '@salesforce/apex/OrderController.getAvailableProducts';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
+import Product_Title from '@salesforce/label/c.Products_Title';
+import Add_Products_Title from '@salesforce/label/c.Add_Products_Title';
 
 export default class AvailableProducts extends LightningElement {
+
+    label = {
+        Product_Title,
+        Add_Products_Title
+    }
 
     @track columns = [
         {label: 'Name', fieldName: 'Name'},
