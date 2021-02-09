@@ -138,4 +138,21 @@ public with sharing class OrderControllerTest {
 
         Test.stopTest();
     }
+
+    @IsTest
+    static void testActivateOrder() {
+        Id orderId = [SELECT Id FROM Order LIMIT 1].Id;
+
+        Test.setMock(HttpCalloutMock.class, new CalloutMock());
+        Test.startTest();
+        try {
+            OrderController.activateOrder(orderId);
+
+            Order order = OrderSelector.getOrderItems(orderId);
+            System.assertEquals('Activated', order.Status, 'Status is set to Activated');
+        } catch(CustomException e) {
+            System.assert(false);
+        }
+        Test.stopTest();
+    }
 }

@@ -10,12 +10,16 @@ public with sharing class OrderDTO {
     public Id Pricebook2Id  {get; set;}
 
     @AuraEnabled
+    public String status  {get; set;}
+
+    @AuraEnabled
     public List<OrderItemDTO> orderItems {get;set;}
 
     public OrderDTO(Order order) {
         this.orderId = order.Id;
         this.accountId = order.AccountId;
         this.Pricebook2Id = order.Pricebook2Id;
+        this.status = order.Status;
 
         List<OrderItemDTO> oiDTOList = new List<OrderItemDTO>();
         for (OrderItem oi : order.OrderItems) {

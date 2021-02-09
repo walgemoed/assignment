@@ -1,6 +1,6 @@
 import {LightningElement, api, wire, track} from 'lwc';
 import getAvailableProducts from '@salesforce/apex/OrderController.getAvailableProducts';
-
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 
 export default class AvailableProducts extends LightningElement {
@@ -38,7 +38,20 @@ export default class AvailableProducts extends LightningElement {
         let selectedRows = productList.getSelectedRows();
 
         let pbeIds = selectedRows.map((element) =>{ return element['Id'] });
-        let payload = { detail : { pbeIds } }
-        this.dispatchEvent(new CustomEvent('addbuttonclicked', payload));
+        if (pbeIds.length === 0) {
+            this.showNotification('error', 'Error', 'No products selected');
+        } else {
+            let payload = {detail: {pbeIds}}
+            this.dispatchEvent(new CustomEvent('addbuttonclicked', payload));
+        }
+    }
+
+    showNotification(variant, title, message) {
+        const evt = new ShowToastEvent({
+            title: title,
+            message: message,
+            variant: variant,
+        });
+        this.dispatchEvent(evt);
     }
 }

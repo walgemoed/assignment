@@ -7,9 +7,8 @@ export default class OrderView extends LightningElement {
      */
     @api recordId;
 
-    handleAddProductButton(event){
+    handleAddProductEvent(event){
         let pbeIds = event.detail['pbeIds'];
-        console.log('##pbeIds: ', pbeIds);
         this.template.querySelector("c-order-details").handleAddProduct(pbeIds);
     }
 

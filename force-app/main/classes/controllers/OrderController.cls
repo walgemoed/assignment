@@ -51,4 +51,15 @@ public inherited sharing class OrderController {
             throw e;
         }
     }
+
+    @AuraEnabled
+    public static OrderDTO activateOrder(String orderId) {
+        try {
+            // Sendout order
+            CalloutService.sendOrder(orderId);
+        } catch(CustomException ex) {
+            throw ex;
+        }
+        return OrderService.updateOrderStatus(orderId);
+    }
 }

@@ -1,33 +1,17 @@
 <template>
-    <div class="slds-size_1-of-1">
-        <article class="slds-card slds-m-right_small slds-p-around_small">
-            <div if:true={isLoading} class="slds-is-relative">
-                <lightning-spinner></lightning-spinner>
+    <lightning-card title="Products" icon-name="custom:custom61">
+        <div class="slds-m-around_medium">
+            <div class="slds-no-flex">
+                <button class="slds-button slds-button_neutral" onclick={addProducts} disabled={isDisabled}>Add Products</button>
             </div>
-            <div class="slds-card__header slds-grid">
-                <header class="slds-media slds-media_center slds-has-flexi-truncate">
-                    <div class="slds-media__figure">
-                        <lightning-icon icon-name="standard:product"></lightning-icon>
-                    </div>
-                    <div class="slds-media__body">
-                        <h2 class="slds-card__header-title">
-                            <span>Available Products</span>
-                        </h2>
-                    </div>
-                    <div class="slds-no-flex">
-                        <button class="slds-button slds-button_neutral" onclick={addProducts} disabled={isDisabled}>Add+</button>
-                    </div>
-                </header>
-            </div>
-            <div class="available_products_table">
-                <lightning-datatable
-                        data-identifier="prodId"
-                        key-field="Id"
-                        data={productData}
-                        columns={columns}>
-                </lightning-datatable>
-            </div>
+            <lightning-datatable
+                    data-identifier="prodId"
+                    key-field="Id"
+                    is-loading={isLoading}
+                    data={productData}
+                    columns={columns}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
 
-        </article>
-    </div>
 </template>

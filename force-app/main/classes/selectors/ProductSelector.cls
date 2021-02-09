@@ -14,11 +14,15 @@ public with sharing class ProductSelector {
             throw new CustomException('No orderId');
         }
         Id pricebookId = OrderSelector.getPriceBookIdFromOrder(orderId);
+        if (pricebookId == null) {
+            pricebookId = [SELECT Id FROM Pricebook2 WHERE IsActive = TRUE AND IsStandard = TRUE].Id;
+        }
         List<PricebookEntry> pricebookEntries = [
                 SELECT Id,
                         Name,
                         UnitPrice,
-                        Product2Id
+                        Product2Id,
+                        Pricebook2Id
                 FROM PricebookEntry
                 WHERE IsActive = TRUE
                     AND
@@ -38,7 +42,8 @@ public with sharing class ProductSelector {
                 SELECT Id,
                         Name,
                         UnitPrice,
-                        Product2Id
+                        Product2Id,
+                        Pricebook2Id
                 FROM PricebookEntry
                 WHERE IsActive = TRUE
                 AND

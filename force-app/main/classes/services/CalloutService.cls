@@ -5,7 +5,7 @@ public with sharing class CalloutService {
 
     public static final String REQUEST_CATCHER_HOST = 'https://457.requestcatcher.com/';
 
-        public static OrderDTO sendOrder(Id orderId) {
+        public static void sendOrder(Id orderId) {
             Order order = OrderSelector.getOrderItems(orderId);
 
             RequestCatcherDTO newOrderDTO = new RequestCatcherDTO();
@@ -45,6 +45,6 @@ public with sharing class CalloutService {
             } else {
                 throw new CustomException('Something went wrong');
             }
-            return OrderController.getOrderItems(orderId);
+
         }
 }
