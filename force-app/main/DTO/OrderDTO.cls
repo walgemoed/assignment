@@ -16,6 +16,7 @@ public with sharing class OrderDTO {
         this.orderId = order.Id;
         this.accountId = order.AccountId;
         this.Pricebook2Id = order.Pricebook2Id;
+
         List<OrderItemDTO> oiDTOList = new List<OrderItemDTO>();
         for (OrderItem oi : order.OrderItems) {
             OrderItemDTO oiDTO = new OrderItemDTO(oi);
